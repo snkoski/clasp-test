@@ -1,25 +1,14 @@
-/**
- * Creates a Google Doc and sends an email to the current user with a link to the doc.
- */
-function createAndSendDocument() {
-  // Create a new Google Doc named 'Hello, world!'
-  var doc = DocumentApp.create('Hello, in app script!');
+function onOpen() {
+  var ui = SpreadsheetApp.getUi();
+  var mainMenu = ui.createMenu("Add Ons");
+  mainMenu.addItem("Help", "onClickHelp");
+  mainMenu.addToUi();
+};
 
-  // Access the body of the document, then add a paragraph.
-  doc.getBody().appendParagraph('This document was created by Google Apps Script.');
-
-  // Get the URL of the document.
-  var url = doc.getUrl();
-
-  // Get the email address of the active user - that's you.
-  var email = Session.getActiveUser().getEmail();
-
-  // Get the name of the document to use as an email subject line.
-  var subject = doc.getName();
-
-  // Append a new string to the "url" variable to use as an email body.
-  var body = 'Link to your doc: ' + url;
-
-  // Send yourself an email with a link to the document.
-  GmailApp.sendEmail(email, subject, body);
+function onClickHelp() {
+var ui = SpreadsheetApp.getUi();
+var message = "How To Use:\n";
+message += "1. Click on \'Tag Medium/Artists\' to set ARTIST NAME and MEDIUM to their proper values. Please do this before anything else.\n 2. Click on '\Upload Dexi Data\' to upload your lots.\n";
+message += "\nFineArt/DecArt format for each lot will be determined by the artwork type you specified for the auction ID that you entered.";
+ui.alert(message);
 }
