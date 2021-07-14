@@ -3,7 +3,7 @@
  */
 function createAndSendDocument() {
   // Create a new Google Doc named 'Hello, world!'
-  var doc = DocumentApp.create('Hello, from github!');
+  var doc = DocumentApp.create('Hello, in app script!');
 
   // Access the body of the document, then add a paragraph.
   doc.getBody().appendParagraph('This document was created by Google Apps Script.');
